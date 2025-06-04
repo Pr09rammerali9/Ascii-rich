@@ -14,6 +14,18 @@ typedef unsigned char cc;
 typedef unsigned int speed;
 typedef unsigned short ushort;
 
+#ifndef VMIN                                      
+#define VMIN 6
+
+#endif
+
+
+#ifndef VTIME
+
+#define VTIME 5
+
+#endif
+
 #ifndef NCCS
 
 #define NCCS 32
@@ -36,30 +48,31 @@ typedef struct {
 #define TCSETS 0x5402
 #define TIOCGWINSZ 0x5413
 #define ICANON 0x00000002
-#define ECHO 0x00000008 
+#define ECHO 0x00000008
 
 typedef struct {
     ushort ws_row;
     ushort ws_col;
     ushort ws_xpixel;
     ushort ws_ypixel;
-} winsize_t;    
+} winsize_t;
 
 typedef struct {
     ushort rows;
-    ushort cols
+    ushort cols;
 } term_t;
 
-bool raw_mode();
-bool cano_mode();
-bool echo_mode();
+bool raw_mode(void);
+bool cano_mode(void);
+bool echo_mode(void);
 
-term_t term_sizes();
+term_t term_sizes(void);
 
-char *term();
+char *term(void);
 
-void set_raw_mode();
-void set_can_mode();
+void set_raw_mode(void);
+void set_can_mode(void);
 void set_echo_mode(const char *stat);
+void reset_mod(void);
 
 #endif
