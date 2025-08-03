@@ -8,5 +8,6 @@
 #include "src/scr.h"
 #include "src/draw.h"
 #include "src/fonts.h"
+#include "src/win.h"
 
 #endif
